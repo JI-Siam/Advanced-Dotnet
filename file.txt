@@ -1,0 +1,6 @@
+dotnet new mvc -n MyMvcApp
+
+dotnet new mvc -n MyMvcApp
+cd MyMvcApp
+code .
+

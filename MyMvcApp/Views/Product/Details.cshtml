@@ -1,0 +1,14 @@
+@model Product
+
+<h1>Product Details</h1>
+<h2>Product Name : @Model.Name</h2>
+<h2>Product Id: @Model.Id</h2>
+<h2>Quantity : @Model.Quantity</h2>
+<h2>Price : @Model.Price</h2>
+
+@if (Model.Price > 1000)
+{
+    <h2 class="text-primary">
+        Premium Product
+    </h2>
+}

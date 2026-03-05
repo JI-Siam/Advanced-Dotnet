@@ -1,0 +1,101 @@
+Task: Student Management System (Complete MVC Practice)
+Objective:
+
+Practice routing, model binding, optional route parameters, filtering logic, foreach loops, and Razor conditional rendering using a single model.
+
+Tasks:
+1. Create a Student model with:
+
+Id
+
+Name
+
+Age
+
+Department
+
+CGPA
+
+Fee
+
+2. In the Controller:
+
+Create a list of students manually.
+
+Implement the following actions:
+
+A. Student List Page
+Routes:
+/Student/List
+/Student/List/{department}
+
+Logic:
+
+If department is provided → show only students from that department.
+
+Otherwise → show all students.
+
+In the List View:
+
+Display students using foreach.
+
+Each student name should link to:
+
+/Student/Profile/{id}
+
+
+Apply Razor conditions:
+
+If CGPA >= 3.5 → Display “Excellent”
+
+Else → Display “Average”
+
+If Fee > 50000 → Display fee in red color
+
+Display total student count at the bottom.
+
+B. Student Profile Page
+Route:
+/Student/Profile/{id}
+
+Logic:
+
+Accept id as route parameter.
+
+Find the matching student from the list.
+
+Pass it to the view.
+
+In the Profile View:
+
+Display all student details.
+
+Apply Razor conditional logic:
+
+If Age < 18 → Display “Minor”
+
+Else → Display “Adult”
+
+If CGPA >= 3.5 → Display “Excellent Student”
+
+Else → Display “Needs Improvement”
+
+Concepts Practiced:
+
+Routing
+
+Route parameters
+
+Optional route parameters
+
+Model binding
+
+Controller-side filtering
+
+foreach loop
+
+Razor if-else
+
+Conditional formatting
+
+Controller-to-view data flow

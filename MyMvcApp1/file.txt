@@ -1,0 +1,45 @@
+
+what is a controller ? 
+-> Request Handler -> Request Accept , Request Process , Request Deliver 
+
+what does model do ? 
+
+-> All the data related are operations are done inside model (Data Validation , Data Design , Data Transportation).
+
+model will consist of many classes which will be used ot validate and transport data.
+
+what does views do ? 
+
+-> ALl the user interface realted stuff are done inside views (html ). 
+
+
+
+Request -> Routing Engine -> Controller -> Controller Factory (Controller is being executed) -> Action Invoker (Decides the Action/Method in the controller) -> Action is executed -> A view mapped with the Action  -> View (User Interface) 
+
+http://localhost:5297/Home/Index 
+
+http://localhost:5297/Student/Indexs (invalid)
+// Traditional 
+file based 
+
+// .Net Core Routing 
+
+http://localhost:5297/{Controller Name}/{Action Inside the Controller}
+
+
+// .cshtml  -> c# html  -> we can use c# along with html ,css and js
+// html -> we can use html , css , js 
+
+if we want to write c# inside html we hav to use @
+
+@{
+    ..// any c# over here
+}
+
+
+Data Passing Methods : 
+
+1. ViewBag  - 
+2. ViewData - 
+3. Model Binding - 
+

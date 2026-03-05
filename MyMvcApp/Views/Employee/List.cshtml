@@ -1,0 +1,50 @@
+
+
+<h1>Employee List</h1>
+
+<table class="table table-bordered">
+
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (dynamic item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@{
+
+                    if(item.Designation =="Manager"){
+                        <span class="text-success">@item.Designation</span>
+                    }
+                    else{
+                        <span>@item.Designation</span>
+                    }
+
+                    }</td>
+                <td>@{
+
+                    if (item.Salary > 50000)
+                    {
+                        <span style="font-weight: bold;">@item.Salary</span>
+                    }
+                    else
+                    {
+                        <span>@item.Salary</span>
+                    }
+
+                }
+            </td>
+        </tr>
+    }
+</tbody>
+
+</table>
+
+<h2 class="text-primary">Employee Count : @Model.Count</h2>

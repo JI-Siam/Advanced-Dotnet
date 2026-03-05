@@ -1,0 +1,54 @@
+@model Student
+
+<h1>Student Profile</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Departments</td>
+            <td>Age</td>
+            <td>CGPA</td>
+            <td>Razor Check</td>
+            <td>Razor Check</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.Department</td>
+            <td>@Model.Age</td>
+            <td>@Model.Cgpa</td>
+            <td>
+                @{
+                    if (Model.Age < 20)
+                    {
+                        <span class="text-danger">Minor</span>
+                    }
+                    else
+                    {
+                        <span class="text-primary">Adult</span>
+                    }
+                }
+            </td>
+
+            <td>
+
+                @{
+                    if (Model.Cgpa < 3.75)
+                    {
+                        <span class="text-danger">Average</span>
+                    }
+                    else
+                    {
+                        <span class="text-success">Excellent </span>
+                    }
+                }
+
+            </td>
+
+        </tr>
+    </tbody>
+</table>

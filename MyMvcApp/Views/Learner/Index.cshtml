@@ -1,0 +1,11 @@
+<h1>Learner Information Form</h1>
+@Html.ValidationSummary()
+<form action="" method="post">
+    Name : <input type="text" name="Name" id="" placeholder="Name" class="form-control">
+    ID : <input type="text" name="Id" id="" placeholder="xx-xxxxx-x" class="form-control">
+    Dob: <input type="date" name="Dob" id="" class="form-control"">
+    Email: <input type=" text" name="Email" id="" class="form-control" placeholder="xx-xxxxx-x@student.aiub.edu"> <span
+    class="text-red">@ViewBag.err</span>
+    <br>
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form>

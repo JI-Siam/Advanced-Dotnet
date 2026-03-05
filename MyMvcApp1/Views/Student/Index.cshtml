@@ -1,0 +1,56 @@
+<h1>Student List</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Id</th>
+            <th>Cgpa</th>
+            <th>Age</th>
+            <th>Semester</th>
+            <th>Fee</th>
+            <th>Razor Check</th>
+            <th>Redirect</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (dynamic item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Id</td>
+                <td>@item.Cgpa</td>
+                <td>@item.Age</td>
+                <td>@item.Semester</td>
+                <td>
+                    @if (@item.Fee > 50000)
+                    {
+                        <span style="color: red;"">@item.Fee</span>
+                    }
+                    else
+                    {
+                        <span>@item.Fee</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Cgpa >= 3.5)
+                    {
+                        <span style=" color: green;">Excellent</span>
+                    }
+                    else
+                    {
+                        <span>Average</span>
+                    }
+                </td>
+                <td>
+                    <a class=" btn btn-primary" href="./Profile/@item.Id">View Details</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<h2>Total Student Count : @Model.Count</h2>
