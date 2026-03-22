@@ -1,0 +1,20 @@
+<h1>Product Adding </h1>
+<h2>@TempData["Unknown Error Occured"]</h2>
+
+<form action="" method="post">
+    <input type="text" name="name" id="" placeholder="Enter Product Name" class="form-control">
+
+    <input type="number" name="price" placeholder="Enter Product Price ex: 800" class="form-control">
+    <br>
+
+    <select name="CategoryId" id="" class="form-control">
+        <option value="" disabled> Select Category </option>
+        @{
+            foreach (var item in Model)
+            {
+                <option value="@item.Id"> @item.Name </option>
+            }
+        }
+    </select>
+    <button class="btn btn-primary">Add Product</button>
+</form>
