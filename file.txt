@@ -4,3 +4,4 @@ dotnet new mvc -n MyMvcApp
 cd MyMvcApp
 code .
 
+Jasim-Plaza-Tenant-Portal

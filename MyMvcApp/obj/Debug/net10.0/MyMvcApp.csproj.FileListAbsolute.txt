@@ -95,3 +95,4 @@
 /Applications/dotnet/MyMvcApp/obj/Debug/net10.0/MyMvcApp.pdb
 /Applications/dotnet/MyMvcApp/obj/Debug/net10.0/MyMvcApp.genruntimeconfig.cache
 /Applications/dotnet/MyMvcApp/obj/Debug/net10.0/ref/MyMvcApp.dll
+/Applications/dotnet/MyMvcApp/obj/Debug/net10.0/MyMvcApp.sourcelink.json

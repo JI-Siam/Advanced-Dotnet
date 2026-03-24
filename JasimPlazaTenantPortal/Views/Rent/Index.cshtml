@@ -1,0 +1,39 @@
+<h1>Rental Records</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Shop Id</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Payment Date</th>
+            <th>Shop Name</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach (var record in Model)
+            {
+                <tr>
+                    <td>@record.Id</td>
+                    <td>@record.ShopId</td>
+                    <td>@record.Month</td>
+                    <td>@record.Year</td>
+                    <td class="">@record.Amount</td>
+                    <td class=@(record.Status == "Paid" ? "text-success" : record.Status == "Due" ? "text-danger" :
+                                                                                                                                                                                                                                                                                                        "text-warning" )>
+                        @record.Status</td>
+                        <td>@record.PaymentDate</td>
+                        <td>@record.Shop.ShopName</td>
+                        <td><a href="Rent/Details/@record.Id" class="btn btn-info">View</a></td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+
+    </table>

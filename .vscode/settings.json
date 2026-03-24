@@ -1,0 +1,16 @@
+{
+  "emmet.includeLanguages": {
+    "aspnetcorerazor": "html",
+    "razor": "html"
+  },
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "css.validate": true,
+  "files.associations": {
+    "*.cshtml": "aspnetcorerazor"
+  }
+}

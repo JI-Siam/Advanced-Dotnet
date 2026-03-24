@@ -1,0 +1,8 @@
+dotnet ef dbcontext scaffold "Server=localhost,1433;Database=JasimPlazaDB;User Id=sa;Password=StrongPass123!;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -o EF/Tables --data-annotations --force
+
+// create db 
+// create db Tables
+// add connection string in appsettings.json
+// install / add EntityFrameworkCore (ef)
+// scaffold database 
+// add dbcontext in program.cs

@@ -1,0 +1,23 @@
+<h1>Create Rent Records</h1>
+<form action="" method="post">
+    ShopId :
+    <select name="ShopId" class="form-select">
+        <option value="" disabled selected>Select Shop</option>
+        @{
+            foreach (var shop in Model)
+            {
+                <option value="@shop.Id">@shop.ShopName</option>
+            }
+        }
+    </select>
+    Month : <input type="number" name="Month" max="12" min="1" placeholder="Month" class="form-control">
+    Year : <input type="number" name="Year" placeholder="Year" class="form-control">
+    Amount : <input type="number" name="Amount" placeholder="Amount" class="form-control">
+    Status : <select name="Status" class="form-select">
+    <option value="Select Payment Status" disabled selected></option>
+    <option value="Paid">Paid</option>
+    <option value="Due">Due</option>
+    <option value="Pending">Pending</option>
+</select>
+<input type="submit" class="btn btn-outline-success">
+</form>

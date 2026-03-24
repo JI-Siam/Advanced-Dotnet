@@ -1,0 +1,27 @@
+<h1>Shop Lists</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Monthly Rent (Taka) </th>
+            <th>Owner</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var shop in Model)
+            {
+                <tr>
+                    <td>@shop.Id</td>
+                    <td>@shop.ShopName</td>
+                    <td>@shop.Location</td>
+                    <td>@shop.MonthlyRent</td>
+                    <td>@shop.Owner.Name</td>
+                </tr>
+            }
+        }
+    </tbody>
+
+</table>
