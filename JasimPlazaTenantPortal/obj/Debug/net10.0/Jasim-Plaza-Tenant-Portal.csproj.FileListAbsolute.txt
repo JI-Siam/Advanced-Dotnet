@@ -376,7 +376,6 @@
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/scopedcss/bundle/Jasim-Plaza-Tenant-Portal.styles.css
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/scopedcss/projectbundle/Jasim-Plaza-Tenant-Portal.bundle.scp.css
-/Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/uz46x2balf-{0}-lugek5hnai-lugek5hnai.gz
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/g5rerh9udq-{0}-61n19gt1b8-61n19gt1b8.gz
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/1ncr2qmplq-{0}-fr7q2aak1r-fr7q2aak1r.gz
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/ddwpv5yrtf-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -438,8 +437,6 @@
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/gl5mpk8o3o-{0}-muycvpuwrr-muycvpuwrr.gz
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/23rqq1poel-{0}-87fc7y1x7t-87fc7y1x7t.gz
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/l220fjyfa2-{0}-jfsiqqwiad-jfsiqqwiad.gz
-/Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/0oymezz27q-{0}-e7sf71vee4-e7sf71vee4.gz
-/Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/18uo9dvyvy-{0}-e7sf71vee4-e7sf71vee4.gz
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/staticwebassets.build.json
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/staticwebassets.build.json.cache
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/staticwebassets.development.json
@@ -448,3 +445,6 @@
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/Jasim-Pl.24361785.Up2Date
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/Jasim-Plaza-Tenant-Portal.genruntimeconfig.cache
 /Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/ref/Jasim-Plaza-Tenant-Portal.dll
+/Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/uz46x2balf-{0}-ds28198vdp-ds28198vdp.gz
+/Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/0oymezz27q-{0}-myzw9740q4-myzw9740q4.gz
+/Applications/dotnet/JasimPlazaTenantPortal/obj/Debug/net10.0/compressed/18uo9dvyvy-{0}-myzw9740q4-myzw9740q4.gz

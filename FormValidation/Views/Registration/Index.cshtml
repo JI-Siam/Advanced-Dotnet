@@ -4,8 +4,8 @@
 @Html.ValidationSummary()
 
 <form action="" method="post">
-    <input type="text" name="name" id="" placeholder="Enter Your Name" class="form-control">
-    <input type="password" name="pass" placeholder="Enter Your Password " class="form-control" />
+    <input type="text" name="name" id="" placeholder="Enter Your Name" class="form-control" value="@Model.Name">
+    <input type="password" name="pass" placeholder="Enter Your Password " class="form-control" value="@Model.Pass" />
 
     <input class="btn btn-primary" type="submit" value="Submit">
 

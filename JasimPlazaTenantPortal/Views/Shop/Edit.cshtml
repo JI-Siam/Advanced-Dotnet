@@ -1,0 +1,46 @@
+@model Jasim_Plaza_Tenant_Portal.EF.Tables.Shop
+
+<div class="mx-auto max-w-2xl">
+    <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <h1 class="text-2xl font-bold tracking-tight text-slate-900">Edit Shop</h1>
+        <p class="mt-1 text-sm text-slate-600">Update shop information or re-assign owner.</p>
+
+        <form asp-action="Edit" method="post" class="mt-5 space-y-4">
+            <input type="hidden" asp-for="Id" />
+
+            <div>
+                <label asp-for="ShopName" class="mb-1 block text-sm font-medium text-slate-700">Shop Name</label>
+                <input asp-for="ShopName" class="w-full rounded-xl border border-slate-300 px-3 py-2" />
+            </div>
+
+            <div>
+                <label asp-for="Location" class="mb-1 block text-sm font-medium text-slate-700">Location</label>
+                <input asp-for="Location" class="w-full rounded-xl border border-slate-300 px-3 py-2" />
+            </div>
+
+            <div>
+                <label asp-for="MonthlyRent" class="mb-1 block text-sm font-medium text-slate-700">Monthly Rent</label>
+                <input asp-for="MonthlyRent" class="w-full rounded-xl border border-slate-300 px-3 py-2" type="number"
+                       step="0.01" min="1" />
+            </div>
+
+            <div>
+                <label asp-for="OwnerId" class="mb-1 block text-sm font-medium text-slate-700">Owner</label>
+                <select asp-for="OwnerId" class="w-full rounded-xl border border-slate-300 px-3 py-2" required>
+                    @foreach (var owner in (List<Jasim_Plaza_Tenant_Portal.EF.Tables.User>)ViewBag.Owners)
+                    {
+                        <option value="@owner.Id">@owner.Name (@owner.Email)</option>
+                    }
+                </select>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+                <button type="submit"
+                        class="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">Update
+                    Shop</button>
+                    <a asp-action="Index"
+                       class="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>

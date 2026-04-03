@@ -1,0 +1,74 @@
+@model Jasim_Plaza_Tenant_Portal.EF.Tables.RentRecord
+
+@{
+    var monthNames = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+}
+
+<h1>Edit Rent Record</h1>
+@if (TempData["msg"] != null)
+{
+    <div class="mb-4 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">@TempData["msg"]</div>
+}
+
+<div class="mx-auto max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <h1 class="text-2xl font-bold tracking-tight text-slate-900">Edit Rent Record</h1>
+
+    <form asp-action="Edit" method="post" class="mt-5 space-y-4">
+        <input asp-for="Id" type="hidden" />
+
+        <div>
+            <label class="mb-1 block text-sm font-medium text-slate-700">Shop</label>
+            <select asp-for="ShopId" class="w-full rounded-xl border border-slate-300 px-3 py-2" required>
+                @foreach (var shop in (List<Jasim_Plaza_Tenant_Portal.EF.Tables.Shop>)ViewBag.Shops)
+                {
+                    <option value="@shop.Id">@shop.ShopName - @shop.Owner.Name</option>
+                }
+            </select>
+        </div>
+
+        <div>
+            <label asp-for="Month" class="mb-1 block text-sm font-medium text-slate-700">Month</label>
+            <select asp-for="Month" class="w-full rounded-xl border border-slate-300 px-3 py-2" required>
+                @for (var i = 1; i <= 12; i++)
+                {
+                    <option value="@i">@i @monthNames[i - 1]</option>
+                }
+            </select>
+        </div>
+
+        <div>
+            <label asp-for="Year" class="mb-1 block text-sm font-medium text-slate-700">Year</label>
+            <input asp-for="Year" type="number" min="2000" max="2100"
+                   class="w-full rounded-xl border border-slate-300 px-3 py-2" required />
+        </div>
+
+        <div>
+            <label asp-for="Amount" class="mb-1 block text-sm font-medium text-slate-700">Amount</label>
+            <input asp-for="Amount" type="number" step="0.01" min="1"
+                   class="w-full rounded-xl border border-slate-300 px-3 py-2" required />
+        </div>
+
+        <div>
+            <label asp-for="Status" class="mb-1 block text-sm font-medium text-slate-700">Status</label>
+            <select asp-for="Status" class="w-full rounded-xl border border-slate-300 px-3 py-2" required>
+                <option value="Due">Due</option>
+                <option value="Pending">Pending</option>
+                <option value="Paid">Paid</option>
+            </select>
+        </div>
+
+        <div>
+            <label asp-for="PaymentDate" class="mb-1 block text-sm font-medium text-slate-700">Payment Date
+                (optional)</label>
+                <input asp-for="PaymentDate" type="date" class="w-full rounded-xl border border-slate-300 px-3 py-2" />
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+                <button type="submit"
+                        class="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">Update
+                    Record</button>
+                    <a asp-action="Index"
+                       class="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Cancel</a>
+                </div>
+            </form>
+        </div>

@@ -1,39 +1,176 @@
-<h1>Rental Records</h1>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Shop Id</th>
-            <th>Month</th>
-            <th>Year</th>
-            <th>Amount</th>
-            <th>Status</th>
-            <th>Payment Date</th>
-            <th>Shop Name</th>
-            <th>Details</th>
-        </tr>
-    </thead>
+@model List<Jasim_Plaza_Tenant_Portal.EF.Tables.RentRecord>
 
-    <tbody>
-        @{
-            foreach (var record in Model)
-            {
-                <tr>
-                    <td>@record.Id</td>
-                    <td>@record.ShopId</td>
-                    <td>@record.Month</td>
-                    <td>@record.Year</td>
-                    <td class="">@record.Amount</td>
-                    <td class=@(record.Status == "Paid" ? "text-success" : record.Status == "Due" ? "text-danger" :
-                                                                                                                                                                                                                                                                                                        "text-warning" )>
-                        @record.Status</td>
-                        <td>@record.PaymentDate</td>
-                        <td>@record.Shop.ShopName</td>
-                        <td><a href="Rent/Details/@record.Id" class="btn btn-info">View</a></td>
-                    </tr>
+@{
+    var isAdmin = ViewBag.IsAdmin is true;
+    var monthNames = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+}
 
+<div class="mb-4 flex flex-col justify-between gap-3 md:flex-row md:items-center">
+    <div>
+        <h1 class="text-2xl font-bold tracking-tight text-slate-900">Rent Records</h1>
+        <p class="mt-1 text-sm text-slate-600">Track monthly rent by shop, owner, and payment status.</p>
+    </div>
+    @if (isAdmin)
+    {
+        <a asp-action="Create"
+               class="inline-flex rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">Add Rent
+            Record</a>
+        }
+    </div>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="mb-4 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">@TempData["msg"]
+        </div>
+    }
+
+    <form asp-action="Index" method="get"
+          class="mb-4 grid gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-5">
+        <div>
+            <label class="mb-1 block text-sm font-medium text-slate-700">Month</label>
+            <select class="w-full rounded-xl border border-slate-300 px-3 py-2" name="month">
+                <option value="">All</option>
+                @for (var i = 1; i <= 12; i++)
+                {
+                    if ((int?)ViewBag.Month == i)
+                    {
+                        <option value="@i" selected>@i @monthNames[i - 1]</option>
+                    }
+                    else
+                    {
+                        <option value="@i">@i @monthNames[i - 1]</option>
+                    }
                 }
-            }
-        </tbody>
+            </select>
+        </div>
+        <div>
+            <label class="mb-1 block text-sm font-medium text-slate-700">Year</label>
+            <input type="number" class="w-full rounded-xl border border-slate-300 px-3 py-2" name="year" min="2000"
+                   max="2100" value="@ViewBag.Year" placeholder="2026" />
+        </div>
+        <div>
+            <label class="mb-1 block text-sm font-medium text-slate-700">Status</label>
+            <select class="w-full rounded-xl border border-slate-300 px-3 py-2" name="status">
+                @if (string.IsNullOrWhiteSpace((string?)ViewBag.Status))
+                {
+                    <option value="" selected>All</option>
+                }
+                else
+                {
+                    <option value="">All</option>
+                }
 
-    </table>
+                @if ((string?)ViewBag.Status == "Due")
+                {
+                    <option value="Due" selected>Due</option>
+                }
+                else
+                {
+                    <option value="Due">Due</option>
+                }
+
+                @if ((string?)ViewBag.Status == "Pending")
+                {
+                    <option value="Pending" selected>Pending</option>
+                }
+                else
+                {
+                    <option value="Pending">Pending</option>
+                }
+
+                @if ((string?)ViewBag.Status == "Paid")
+                {
+                    <option value="Paid" selected>Paid</option>
+                }
+                else
+                {
+                    <option value="Paid">Paid</option>
+                }
+            </select>
+        </div>
+        @if (isAdmin)
+        {
+            <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Shop Name</label>
+                <input type="text" class="w-full rounded-xl border border-slate-300 px-3 py-2" name="shopName"
+                       value="@ViewBag.ShopName" placeholder="Search shop" />
+            </div>
+        }
+        <div class="flex items-end gap-2 sm:col-span-2 lg:col-span-1">
+            <button type="submit"
+                    class="w-full rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">Filter</button>
+            <a asp-action="Index"
+               class="w-full rounded-xl border border-slate-300 px-4 py-2 text-center text-sm font-semibold text-slate-700 hover:bg-slate-100">Clear</a>
+        </div>
+    </form>
+
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-slate-200 text-sm">
+                <thead class="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <tr>
+                        <th class="px-4 py-3">Shop</th>
+                        <th class="px-4 py-3">Owner</th>
+                        <th class="px-4 py-3">Month</th>
+                        <th class="px-4 py-3">Year</th>
+                        <th class="px-4 py-3">Amount</th>
+                        <th class="px-4 py-3">Status</th>
+                        <th class="px-4 py-3">Payment Date</th>
+                        <th class="px-4 py-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                    @if (Model.Count == 0)
+                    {
+                        <tr>
+                            <td colspan="8" class="px-4 py-10 text-center text-sm text-slate-500">No rent records found for the
+                                selected filters.</td>
+                            </tr>
+                        }
+                    else
+                        {
+                            @foreach (var record in Model)
+                            {
+                                var badgeClass = record.Status == "Paid" ? "bg-emerald-100 text-emerald-700" :
+                                                 record.Status == "Pending" ? "bg-amber-100 text-amber-700" :
+                                                 "bg-rose-100 text-rose-700";
+                                var ownerInvoiceId = $"INV-{record.Id}-{record.Month:D2}";
+                                <tr class="hover:bg-slate-50">
+                                    <td class="px-4 py-3 font-medium">@record.Shop.ShopName</td>
+                                    <td class="px-4 py-3">@record.Shop.Owner.Name</td>
+                                    <td class="px-4 py-3">@record.Month @monthNames[record.Month - 1]</td>
+                                    <td class="px-4 py-3">@record.Year</td>
+                                    <td class="px-4 py-3">@record.Amount.ToString("N2")</td>
+                                    <td class="px-4 py-3"><span
+                                        class="rounded-full px-2.5 py-1 text-xs font-semibold @badgeClass">@record.Status</span>
+                                    </td>
+                                    <td class="px-4 py-3">@(record.PaymentDate?.ToString("yyyy-MM-dd") ?? "-")</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-wrap gap-2">
+                                            @if (isAdmin)
+                                            {
+                                                <a asp-action="Details" asp-route-id="@record.Id"
+                                                   class="rounded-lg border border-cyan-200 px-3 py-1.5 text-xs font-semibold text-cyan-700 hover:bg-cyan-50">Details</a>
+                                                <a asp-action="Invoice" asp-route-id="@record.Id"
+                                                   class="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100">Invoice</a>
+                                                <a asp-action="Edit" asp-route-id="@record.Id"
+                                                   class="rounded-lg border border-blue-200 px-3 py-1.5 text-xs font-semibold text-blue-700 hover:bg-blue-50">Edit</a>
+                                                <a asp-action="Delete" asp-route-id="@record.Id"
+                                                   class="rounded-lg border border-rose-200 px-3 py-1.5 text-xs font-semibold text-rose-700 hover:bg-rose-50">Delete</a>
+                                            }
+                                            else
+                                            {
+                                                <a asp-action="DetailsByCode" asp-route-invoiceId="@ownerInvoiceId"
+                                                   class="rounded-lg border border-cyan-200 px-3 py-1.5 text-xs font-semibold text-cyan-700 hover:bg-cyan-50">Details</a>
+                                                <a asp-action="InvoiceByCode" asp-route-invoiceId="@ownerInvoiceId"
+                                                   class="rounded-lg border border-slate-300 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100">Invoice</a>
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>

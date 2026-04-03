@@ -1,9 +1,52 @@
-<h1>Add Shop</h1>
-<h2>@TempData["msg"]</h2>
-<form action="" method="post">
-    Shop Name : <input type="text" name="ShopName" placeholder="Shop Name" class="form-control">
-    Shop Location : <input type="text" name="Location" placeholder="Location" class="form-control">
-    MonthlyRent : <input type="number" name="MonthlyRent" placeholder="MonthlyRent" class="form-control">
-    OwnerId : <input type="number" name="OwnerId" placeholder="OwnerId" class="form-control" />
-    <input type="submit" class="btn btn-success">
-</form>
+@model Jasim_Plaza_Tenant_Portal.EF.Tables.Shop
+
+<div class="mx-auto max-w-2xl">
+    <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <h1 class="text-2xl font-bold tracking-tight text-slate-900">Create Shop</h1>
+        <p class="mt-1 text-sm text-slate-600">Add a new shop and assign it to an owner.</p>
+        @if (TempData["msg"] != null)
+        {
+            <div class="mt-4 rounded-xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-700">@TempData["msg"]
+            </div>
+        }
+
+        <form asp-action="Create" method="post" class="mt-5 space-y-4">
+            <div>
+                <label asp-for="ShopName" class="mb-1 block text-sm font-medium text-slate-700">Shop Name</label>
+                <input asp-for="ShopName" class="w-full rounded-xl border border-slate-300 px-3 py-2"
+                       placeholder="Shop name" />
+            </div>
+
+            <div>
+                <label asp-for="Location" class="mb-1 block text-sm font-medium text-slate-700">Location</label>
+                <input asp-for="Location" class="w-full rounded-xl border border-slate-300 px-3 py-2"
+                       placeholder="Location" />
+            </div>
+
+            <div>
+                <label asp-for="MonthlyRent" class="mb-1 block text-sm font-medium text-slate-700">Monthly Rent</label>
+                <input asp-for="MonthlyRent" class="w-full rounded-xl border border-slate-300 px-3 py-2" type="number"
+                       step="0.01" min="1" placeholder="Monthly rent" />
+            </div>
+
+            <div>
+                <label asp-for="OwnerId" class="mb-1 block text-sm font-medium text-slate-700">Owner</label>
+                <select asp-for="OwnerId" class="w-full rounded-xl border border-slate-300 px-3 py-2" required>
+                    <option value="">Select owner</option>
+                    @foreach (var owner in (List<Jasim_Plaza_Tenant_Portal.EF.Tables.User>)ViewBag.Owners)
+                    {
+                        <option value="@owner.Id">@owner.Name (@owner.Email)</option>
+                    }
+                </select>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+                <button type="submit"
+                        class="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">Save
+                    Shop</button>
+                    <a asp-action="Index"
+                       class="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,31 @@
+@model Jasim_Plaza_Tenant_Portal.EF.Tables.RentRecord
+
+@{
+    var monthNames = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+}
+
+<div class="mx-auto max-w-2xl rounded-3xl border border-rose-200 bg-white p-6 shadow-sm sm:p-8">
+    <h1 class="text-2xl font-bold tracking-tight text-slate-900">Delete Rent Record</h1>
+    <p class="mt-1 text-sm text-slate-600">This will permanently remove the selected rent record.</p>
+
+    <div class="mt-4 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+        <strong>Confirm delete</strong> for @Model.Shop.ShopName (@Model.Month @monthNames[Model.Month - 1]/@Model.Year)
+    </div>
+
+    <div class="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
+        <p><span class="font-semibold">Owner:</span> @Model.Shop.Owner.Name</p>
+        <p class="mt-1"><span class="font-semibold">Amount:</span> @Model.Amount.ToString("N2") BDT</p>
+        <p class="mt-1"><span class="font-semibold">Status:</span> @Model.Status</p>
+    </div>
+
+    <form asp-action="Delete" method="post" class="mt-5">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <div class="flex flex-wrap gap-2">
+            <button type="submit"
+                    class="rounded-xl bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700">Delete
+                Record</button>
+                <a asp-action="Index"
+                   class="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Cancel</a>
+            </div>
+        </form>
+    </div>

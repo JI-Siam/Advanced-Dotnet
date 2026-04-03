@@ -1,27 +1,83 @@
-<h1>Shop Lists</h1>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Monthly Rent (Taka) </th>
-            <th>Owner</th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            foreach (var shop in Model)
-            {
-                <tr>
-                    <td>@shop.Id</td>
-                    <td>@shop.ShopName</td>
-                    <td>@shop.Location</td>
-                    <td>@shop.MonthlyRent</td>
-                    <td>@shop.Owner.Name</td>
-                </tr>
-            }
-        }
-    </tbody>
+@model List<Jasim_Plaza_Tenant_Portal.EF.Tables.Shop>
 
-</table>
+@{
+    var currentUser = ViewBag.CurrentUser as Jasim_Plaza_Tenant_Portal.EF.Tables.User;
+    var isAdmin = currentUser?.Role == "Admin";
+}
+
+<div class="mb-3 flex flex-col justify-between gap-3 md:flex-row md:items-center">
+    <div class="mb-3 md:mb-0">
+        <h1 class="text-2xl font-bold tracking-tight text-slate-900">Shops</h1>
+        <p class="mt-1 text-sm text-slate-600">Manage all tenant shops and their owners.</p>
+    </div>
+    @if (isAdmin)
+    {
+        <a asp-controller="Shop" asp-action="Create"
+               class="inline-flex rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">Add New
+            Shop</a>
+        }
+    </div>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="mb-3 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">@TempData["msg"]
+        </div>
+    }
+
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-slate-200 text-sm">
+                <thead class="bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                    <tr>
+                        @if (isAdmin)
+                        {
+                            <th class="px-4 py-3">Id</th>
+                        }
+                        <th class="px-4 py-3">Shop Name</th>
+                        <th class="px-4 py-3">Location</th>
+                        <th class="px-4 py-3">Monthly Rent (BDT)</th>
+                        <th class="px-4 py-3">Owner</th>
+                        <th class="px-4 py-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-slate-700">
+                    @if (Model.Count == 0)
+                    {
+                        <tr>
+                            <td colspan="@(isAdmin ? 6 : 5)" class="px-4 py-10 text-center text-sm text-slate-500">No shops
+                                found yet.</td>
+                            </tr>
+                        }
+                    else
+                        {
+                            @foreach (var shop in Model)
+                            {
+                                <tr class="hover:bg-slate-50">
+                                    @if (isAdmin)
+                                    {
+                                        <td class="px-4 py-3">@shop.Id</td>
+                                    }
+                                    <td class="px-4 py-3 font-medium">@shop.ShopName</td>
+                                    <td class="px-4 py-3">@shop.Location</td>
+                                    <td class="px-4 py-3">@shop.MonthlyRent.ToString("N2")</td>
+                                    <td class="px-4 py-3">@shop.Owner.Name</td>
+                                    <td class="px-4 py-3">
+                                        @if (isAdmin)
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@shop.Id"
+                                               class="mr-2 inline-flex rounded-lg border border-blue-200 px-3 py-1.5 text-xs font-semibold text-blue-700 hover:bg-blue-50">Edit</a>
+                                            <a asp-action="Delete" asp-route-id="@shop.Id"
+                                               class="inline-flex rounded-lg border border-rose-200 px-3 py-1.5 text-xs font-semibold text-rose-700 hover:bg-rose-50">Delete</a>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-xs text-slate-500">View only</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>

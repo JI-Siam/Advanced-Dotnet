@@ -22,7 +22,7 @@ public class RegistrationController : Controller
         {
             return RedirectToAction("Index");
         }
-        return View();
+        return View(obj);
     }
 
 }

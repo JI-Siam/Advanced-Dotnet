@@ -1,2 +1,81 @@
-<h1>Details Page</h1>
-<h2>@Model.Id</h2>
+@model Jasim_Plaza_Tenant_Portal.EF.Tables.RentRecord
+
+@{
+    var statusClass = Model.Status == "Paid" ? "text-success" : Model.Status == "Due" ? "text-danger" : "text-warning";
+    var currentUser = ViewBag.CurrentUser as Jasim_Plaza_Tenant_Portal.EF.Tables.User;
+    var isAdmin = currentUser?.Role == "Admin";
+    var monthNames = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+    var adminInvoiceId = $"INV-{Model.Id}-{Model.ShopId}-{Model.Month:D2}";
+    var ownerInvoiceId = $"INV-{Model.Id}-{Model.Month:D2}";
+}
+
+<div class="mx-auto max-w-3xl rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <h1 class="text-2xl font-bold tracking-tight text-slate-900">Rent Details</h1>
+    <p class="mt-1 text-sm text-slate-600">Invoice summary</p>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="mt-4 rounded-xl border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-900">@TempData["msg"]
+        </div>
+    }
+
+    <div class="mt-5 space-y-2 text-sm text-slate-700">
+        <p><span class="font-semibold">Shop:</span> @Model.Shop.ShopName</p>
+        <p><span class="font-semibold">Owner:</span> @Model.Shop.Owner.Name (@Model.Shop.Owner.Email)</p>
+        <p><span class="font-semibold">Invoice ID:</span> @(isAdmin ? adminInvoiceId : ownerInvoiceId)</p>
+        <p><span class="font-semibold">Billing Period:</span> @Model.Month @monthNames[Model.Month - 1] / @Model.Year
+        </p>
+        <p><span class="font-semibold">Rent Amount:</span> @Model.Amount.ToString("N2") BDT</p>
+        <p><span class="font-semibold">Status:</span> <span class="@statusClass font-bold">@Model.Status</span></p>
+        <p><span class="font-semibold">Payment Date:</span> @(Model.PaymentDate?.ToString("yyyy-MM-dd") ?? "Not paid yet")</p>
+    </div>
+
+    @if (Model.Status == "Paid")
+    {
+        <div class="mt-4 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">Payment
+            Completed</div>
+        }
+    else if (Model.Status == "Due")
+        {
+            <div class="mt-4 rounded-xl border border-rose-100 bg-rose-50 px-4 py-3 text-sm text-rose-700">Payment Due</div>
+        }
+        else
+        {
+            <div class="mt-4 rounded-xl border border-amber-100 bg-amber-50 px-4 py-3 text-sm text-amber-700">Payment Pending
+            </div>
+        }
+
+        <div class="mt-5 flex flex-wrap items-center gap-2">
+            @if (isAdmin)
+            {
+                <a asp-action="Invoice" asp-route-id="@Model.Id"
+                       class="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Printable
+                    Invoice</a>
+                    <a asp-action="Edit" asp-route-id="@Model.Id"
+                           class="rounded-xl border border-blue-200 px-4 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50">Edit
+                        Record</a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id"
+                               class="rounded-xl border border-rose-200 px-4 py-2 text-sm font-semibold text-rose-700 hover:bg-rose-50">Delete
+                            Record</a>
+                        }
+        else
+                        {
+                            <a asp-action="InvoiceByCode" asp-route-invoiceId="@ownerInvoiceId"
+                                   class="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Printable
+                                Invoice</a>
+
+                                @if (!string.Equals(Model.Status, "Paid", StringComparison.OrdinalIgnoreCase))
+                                {
+                                    <form asp-action="PayWithBkash" method="post" class="inline-flex">
+                                        <input type="hidden" name="invoiceId" value="@ownerInvoiceId" />
+                                        <button type="submit"
+                                                class="rounded-xl bg-pink-600 px-4 py-2 text-sm font-semibold text-white hover:bg-pink-700">Pay with
+                                            bKash</button>
+                                        </form>
+                                    }
+                                }
+
+                                <a asp-action="Index"
+                                   class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700">Back</a>
+                            </div>
+                        </div>

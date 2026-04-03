@@ -1,0 +1,50 @@
+@model Jasim_Plaza_Tenant_Portal.Models.UserProfileUpdateModel
+
+@{
+    var currentUser = ViewBag.CurrentUser as Jasim_Plaza_Tenant_Portal.EF.Tables.User;
+}
+
+<div class="mx-auto max-w-2xl">
+    <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <h1 class="text-2xl font-bold tracking-tight text-slate-900">Update Profile</h1>
+        <p class="mt-1 text-sm text-slate-600">Update your name and password.</p>
+        @if (TempData["msg"] != null)
+        {
+            <div class="mt-4 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                @TempData["msg"]</div>
+            }
+
+            <div class="mt-4 flex flex-wrap items-center gap-2 text-sm">
+                <span class="rounded-full bg-slate-900 px-3 py-1 font-semibold text-white">@currentUser?.Role</span>
+                <span class="text-slate-500">@currentUser?.Email</span>
+            </div>
+
+            <form asp-action="Profile" method="post" class="mt-5 space-y-4">
+                <div>
+                    <label asp-for="Name" class="mb-1 block text-sm font-medium text-slate-700"></label>
+                    <input asp-for="Name"
+                           class="w-full rounded-xl border border-slate-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                    <span asp-validation-for="Name" class="mt-1 block text-sm text-red-600"></span>
+                </div>
+
+                <div>
+                    <label asp-for="Password" class="mb-1 block text-sm font-medium text-slate-700"></label>
+                    <input asp-for="Password" type="password"
+                           class="w-full rounded-xl border border-slate-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+                    <span asp-validation-for="Password" class="mt-1 block text-sm text-red-600"></span>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    <button type="submit"
+                            class="rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">Save
+                        Profile</button>
+                        <a asp-controller="Home" asp-action="Index"
+                           class="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }

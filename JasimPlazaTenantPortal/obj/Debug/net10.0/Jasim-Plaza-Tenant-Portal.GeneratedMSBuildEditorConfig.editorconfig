@@ -42,12 +42,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVudC9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Applications/dotnet/JasimPlazaTenantPortal/Views/Rent/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVudC9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Applications/dotnet/JasimPlazaTenantPortal/Views/Rent/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVudC9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Applications/dotnet/JasimPlazaTenantPortal/Views/Rent/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVudC9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Applications/dotnet/JasimPlazaTenantPortal/Views/Rent/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVudC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/dotnet/JasimPlazaTenantPortal/Views/Rent/Invoice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmVudC9JbnZvaWNlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Applications/dotnet/JasimPlazaTenantPortal/Views/Shared/Error.cshtml]
@@ -62,8 +74,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hvcC9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Applications/dotnet/JasimPlazaTenantPortal/Views/Shop/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hvcC9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/dotnet/JasimPlazaTenantPortal/Views/Shop/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hvcC9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Applications/dotnet/JasimPlazaTenantPortal/Views/Shop/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hvcC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/dotnet/JasimPlazaTenantPortal/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/dotnet/JasimPlazaTenantPortal/Views/User/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Applications/dotnet/JasimPlazaTenantPortal/Views/User/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9Qcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Applications/dotnet/JasimPlazaTenantPortal/Views/_ViewImports.cshtml]

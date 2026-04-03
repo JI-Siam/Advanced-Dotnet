@@ -1,0 +1,24 @@
+<h1>Student List</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Serial</th>
+        <th>Name</th>
+        <th>Cgpa</th>
+    </tr>
+
+    <tbody>
+        @{
+            foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.Name</td>
+                    <td>@student.Gpa</td>
+                </tr>
+
+              
+            }
+        }
+    </tbody>
+</table>

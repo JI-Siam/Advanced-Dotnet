@@ -1,55 +1,133 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - JasimPlazaTenantPortal</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Jasim_Plaza_Tenant_Portal.styles.css" asp-append-version="true" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+        theme: {
+        extend: {
+        colors: {
+        brand: {
+        50: '#eff6ff',
+        500: '#2563eb',
+        700: '#1d4ed8'
+        }
+        }
+        }
+        }
+        }
+    </script>
 </head>
 
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home"
-                   asp-action="Index">Jasim_Plaza_Tenant_Portal</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                               asp-action="Privacy">Privacy</a>
-                        </li>
+<body class="min-h-screen bg-slate-50 text-slate-800 antialiased">
+    @{
+        var returnUrl = Context.Request.Path + Context.Request.QueryString;
+        var isLoggedIn = Context.Session.GetInt32("CurrentUserId") != null;
+    }
 
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div
+        class="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,#bfdbfe_0%,transparent_35%),radial-gradient(circle_at_bottom_right,#e2e8f0_0%,transparent_40%)]">
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - JasimPlazaTenantPortal - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+    <header class="border-b border-slate-200 bg-white/90 backdrop-blur">
+        <nav class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+            <a asp-area="" asp-controller="Home" asp-action="Index"
+               class="text-lg font-semibold tracking-tight text-slate-900">Jasim Plaza Portal</a>
 
-</html>
+            <button id="mobileNavBtn" type="button"
+                    class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 md:hidden"
+                    aria-label="Toggle menu">
+                Menu
+            </button>
+
+            <div id="desktopNav" class="hidden w-full items-center justify-between gap-4 md:flex md:w-auto">
+                @if (isLoggedIn)
+                {
+                    <div class="flex items-center gap-1 rounded-xl border border-slate-200 bg-slate-100/70 p-1 text-sm">
+                        <a asp-controller="Home" asp-action="Index"
+                           class="rounded-lg px-3 py-2 text-slate-700 hover:bg-white hover:text-slate-900">Home</a>
+                        <a asp-controller="Shop" asp-action="Index"
+                           class="rounded-lg px-3 py-2 text-slate-700 hover:bg-white hover:text-slate-900">Shops</a>
+                        <a asp-controller="Rent" asp-action="Index"
+                           class="rounded-lg px-3 py-2 text-slate-700 hover:bg-white hover:text-slate-900">Rent</a>
+                        <a asp-controller="User" asp-action="Index"
+                           class="rounded-lg px-3 py-2 text-slate-700 hover:bg-white hover:text-slate-900">Users</a>
+                        <a asp-controller="Home" asp-action="Privacy"
+                           class="rounded-lg px-3 py-2 text-slate-700 hover:bg-white hover:text-slate-900">Privacy</a>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a asp-controller="User" asp-action="Profile"
+                               class="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">My
+                            Profile</a>
+                            <form asp-controller="User" asp-action="Logout" method="post">
+                                <button type="submit"
+                                        class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700">Logout</button>
+                            </form>
+                        </div>
+                    }
+                else
+                    {
+                        <a asp-controller="User" asp-action="Login" asp-route-returnUrl="@returnUrl"
+                           class="rounded-lg bg-brand-500 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700">Login</a>
+                    }
+                </div>
+            </nav>
+
+            <div id="mobileNav" class="hidden border-t border-slate-200 bg-white px-4 py-3 md:hidden">
+                @if (isLoggedIn)
+                {
+                    <div class="grid gap-2 text-sm">
+                        <a asp-controller="Home" asp-action="Index" class="rounded-lg px-3 py-2 hover:bg-slate-100">Home</a>
+                        <a asp-controller="Shop" asp-action="Index" class="rounded-lg px-3 py-2 hover:bg-slate-100">Shops</a>
+                        <a asp-controller="Rent" asp-action="Index" class="rounded-lg px-3 py-2 hover:bg-slate-100">Rent</a>
+                        <a asp-controller="User" asp-action="Index" class="rounded-lg px-3 py-2 hover:bg-slate-100">Users</a>
+                        <a asp-controller="Home" asp-action="Privacy"
+                           class="rounded-lg px-3 py-2 hover:bg-slate-100">Privacy</a>
+                        <a asp-controller="User" asp-action="Profile" class="rounded-lg px-3 py-2 hover:bg-slate-100">My
+                            Profile</a>
+                            <form asp-controller="User" asp-action="Logout" method="post" class="pt-2">
+                                <button type="submit"
+                                        class="w-full rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white">Logout</button>
+                            </form>
+                        </div>
+                    }
+            else
+                    {
+                        <a asp-controller="User" asp-action="Login" asp-route-returnUrl="@returnUrl"
+                           class="inline-block rounded-lg bg-brand-500 px-4 py-2 text-sm font-medium text-white">Login</a>
+                    }
+                </div>
+            </header>
+
+            <div class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                <main role="main" class="min-h-[70vh]">
+                    @RenderBody()
+                </main>
+            </div>
+
+            <footer class="border-t border-slate-200 bg-white/80">
+                <div
+                    class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-2 px-4 py-4 text-sm text-slate-500 sm:flex-row sm:px-6 lg:px-8">
+                    <span>&copy; 2026 - Jasim Plaza Tenant Portal</span>
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy" class="hover:text-slate-800">Privacy</a>
+                </div>
+            </footer>
+
+            @await RenderSectionAsync("Scripts", required: false)
+            <script>
+                const mobileNavBtn = document.getElementById('mobileNavBtn');
+                const mobileNav = document.getElementById('mobileNav');
+                if (mobileNavBtn && mobileNav) {
+                mobileNavBtn.addEventListener('click', () => {
+                mobileNav.classList.toggle('hidden');
+                });
+                }
+            </script>
+        </body>
+
+    </html>
