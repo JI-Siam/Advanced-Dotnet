@@ -33,8 +33,38 @@ public class EmployeeController : Controller
 
         db.Employees.Add(emp);
         db.SaveChanges();
+        TempData["CreateMsg"] = "Employee with Id " + emp.EmployeeId + " created successfully";
         return RedirectToAction("Index");
     }
+
+
+    [HttpGet]
+    public IActionResult Update(int id)
+    {
+        var data = db.Employees.Find(id);
+        return View(data);
+    }
+
+    [HttpPost]
+    public IActionResult Update(Employee formObj)
+    {
+        try
+        {
+            db.Employees.Update(formObj);
+            db.SaveChanges();
+            TempData["EditMsg"] = "Employee with Id " + formObj.EmployeeId + " Updated successfully";
+            return RedirectToAction("Index");
+        }
+
+        catch
+        {
+            TempData["EditMsg"] = "Employee with Id " + formObj.EmployeeId + " Could not be updated - Unknown Error!!";
+            return View(formObj);
+        }
+
+    }
+
+
 
     public IActionResult Delete(int id)
     {

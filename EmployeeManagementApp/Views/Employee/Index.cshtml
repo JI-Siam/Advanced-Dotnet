@@ -2,6 +2,10 @@
 Employee</a>
 
 <h5 class="text-danger text-center fw-bolder">@TempData["deleteMsg"]</h5>
+
+<h5 class="text-success text-center fw-bolder">@TempData["CreateMsg"]</h5>
+
+<h5 class="text-warning text-center fw-bolder">@TempData["EditMsg"]</h5>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -28,7 +32,7 @@ Employee</a>
                     </a>
                     <a href="./Employee/Delete/@employee.EmployeeId" class="btn btn-outline-info">Remove
                     </a>
-                    <a href="./Employee/Edit/@employee.EmployeeId" class="btn btn-outline-info">Edit
+                    <a href="./Employee/Update/@employee.EmployeeId" class="btn btn-outline-info">Edit
                     </a>
                 </td>
             </tr>

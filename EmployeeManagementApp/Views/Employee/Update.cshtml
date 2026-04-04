@@ -1,0 +1,21 @@
+<h1>Add Employee</h1>
+
+<form action="" method="post">
+    Employee Name: <input type="text" name="EmployeeName" class="form-control" placeholder="Enter Employee Name"
+                          value=@Model.EmployeeName>
+    Employee Id: <input type="text" disabled name="EmployeeId" class="form-control" placeholder="Enter EmployeeIde"
+                        value=@Model.EmployeeId>
+
+    <input type="hidden" name="EmployeeId" class="form-control" placeholder="Enter EmployeeIde" value=@Model.EmployeeId>
+
+                    
+    Performance Score: <input type="number" step="0.01" name="PerformanceScore" class="form-control"
+                              placeholder="Enter Employee PerformanceScore" value=@Model.PerformanceScore>
+    Lowest Project Rating: <input type="number" step="0.01" name="LowestProjectRating" class="form-control"
+                                  placeholder="Enter Employee LowestProjectRating" value=@Model.LowestProjectRating>
+    Total Projects Completed: <input type="number" step="0.01" name="TotalProjectsCompleted" class="form-control"
+                                     placeholder="Enter Employee TotalProjectsCompleted" value=@Model.TotalProjectsCompleted>
+
+    <input class="btn btn-success" type="submit" value="Update">
+
+</form>
