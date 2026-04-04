@@ -1,5 +1,7 @@
-<h1>Employee List</h1>
+<h1>Employee List</h1> <a asp-controller="Employee" asp-action="Create" class="btn btn-outline-secondary">Add
+Employee</a>
 
+<h5 class="text-danger text-center fw-bolder">@TempData["deleteMsg"]</h5>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -8,6 +10,7 @@
             <th>Performance Score</th>
             <th>Lowest Project Rating</th>
             <th>Total Projects Completed</th>
+            <th>Options</th>
         </tr>
     </thead>
 
@@ -21,10 +24,17 @@
                     <td>@employee.PerformanceScore</td>
                     <td>@employee.LowestProjectRating</td>
                     <td>@employee.TotalProjectsCompleted</td>
-                </tr>
-            }
+                    <td><a href="./Employee/Details/@employee.EmployeeId" class="btn btn-outline-info">View
+                    </a>
+                    <a href="./Employee/Delete/@employee.EmployeeId" class="btn btn-outline-info">Remove
+                    </a>
+                    <a href="./Employee/Edit/@employee.EmployeeId" class="btn btn-outline-info">Edit
+                    </a>
+                </td>
+            </tr>
         }
-    </tbody>
+    }
+</tbody>
 </table>
 
 <h1>Filtered Employee List</h1>

@@ -1,0 +1,26 @@
+@model EmployeeManagementApp.EF.Tables.Employee
+
+<h1>Employee Details</h1>
+
+<h2>Employee Name : @Model.EmployeeName</h2>
+<h2>Employee ID : @Model.EmployeeId</h2>
+<h2 class=@( @Model.PerformanceScore >= 4.5m ? "text-success" : "text-danger")>Performance Score:
+    @Model.PerformanceScore
+</h2>
+<h2 class=@(@Model.LowestProjectRating > 3.7m ?"text-success" : "text-danger")> Lowest Project Rating
+    :@Model.LowestProjectRating</h2>
+    <h2 class=@( @Model.TotalProjectsCompleted >=6 ? "text-success" : "text-danger")>Total Project Completed :
+        @Model.TotalProjectsCompleted</h2>
+
+
+        @{
+            if (Model.PerformanceScore >= 4.5m && Model.LowestProjectRating > 3.7m && Model.TotalProjectsCompleted >= 6)
+            {
+                <h1 class="text-capitalize text-bg-success fw-bold">Excellent Employee</h1>
+            }
+            else
+            {
+                <h1 class="text-capitalize text-bg-danger fw-bold">Ordinary Employee</h1>
+            }
+    
+        }
