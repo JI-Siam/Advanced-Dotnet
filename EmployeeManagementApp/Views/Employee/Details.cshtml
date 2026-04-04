@@ -1,26 +1,63 @@
 @model EmployeeManagementApp.EF.Tables.Employee
 
-<h1>Employee Details</h1>
+<div class="row justify-content-center">
+    <div class="col-lg-9 col-xl-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <h1 class="h4 mb-0">Employee Details</h1>
+                <a asp-controller="Employee" asp-action="Index" class="btn btn-sm btn-outline-secondary">Back</a>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="p-3 border rounded-3 bg-light-subtle">
+                            <div class="text-muted small">Employee Name</div>
+                            <div class="fw-semibold">@Model.EmployeeName</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 border rounded-3 bg-light-subtle">
+                            <div class="text-muted small">Employee ID</div>
+                            <div class="fw-semibold">@Model.EmployeeId</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 border rounded-3">
+                            <div class="text-muted small mb-1">Performance Score</div>
+                            <span
+                            class="badge fs-6 @(Model.PerformanceScore >= 4.5m ? "bg-success" : "bg-danger")">@Model.PerformanceScore</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 border rounded-3">
+                            <div class="text-muted small mb-1">Lowest Project Rating</div>
+                            <span
+                            class="badge fs-6 @(Model.LowestProjectRating > 3.7m ? "bg-success" : "bg-danger")">@Model.LowestProjectRating</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 border rounded-3">
+                            <div class="text-muted small mb-1">Total Projects Completed</div>
+                            <span
+                            class="badge fs-6 @(Model.TotalProjectsCompleted >= 6 ? "bg-success" : "bg-danger")">@Model.TotalProjectsCompleted</span>
+                        </div>
+                    </div>
+                </div>
 
-<h2>Employee Name : @Model.EmployeeName</h2>
-<h2>Employee ID : @Model.EmployeeId</h2>
-<h2 class=@( @Model.PerformanceScore >= 4.5m ? "text-success" : "text-danger")>Performance Score:
-    @Model.PerformanceScore
-</h2>
-<h2 class=@(@Model.LowestProjectRating > 3.7m ?"text-success" : "text-danger")> Lowest Project Rating
-    :@Model.LowestProjectRating</h2>
-    <h2 class=@( @Model.TotalProjectsCompleted >=6 ? "text-success" : "text-danger")>Total Project Completed :
-        @Model.TotalProjectsCompleted</h2>
-
-
-        @{
-            if (Model.PerformanceScore >= 4.5m && Model.LowestProjectRating > 3.7m && Model.TotalProjectsCompleted >= 6)
-            {
-                <h1 class="text-capitalize text-bg-success fw-bold">Excellent Employee</h1>
-            }
-            else
-            {
-                <h1 class="text-capitalize text-bg-danger fw-bold">Ordinary Employee</h1>
-            }
-    
-        }
+                <div class="mt-4">
+                    @{
+                        if (Model.PerformanceScore >= 4.5m && Model.LowestProjectRating > 3.7m &&
+                    Model.TotalProjectsCompleted >= 6)
+                        {
+                            <div class="alert alert-success fw-semibold mb-0" role="alert">Excellent Employee</div>
+                        }
+                        else
+                        {
+                            <div class="alert alert-danger fw-semibold mb-0" role="alert">Ordinary Employee</div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

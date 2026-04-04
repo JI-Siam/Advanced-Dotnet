@@ -1,21 +1,49 @@
-<h1>Add Employee</h1>
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4 p-md-5">
+                <h1 class="h3 mb-4">Update Employee</h1>
 
-<form action="" method="post">
-    Employee Name: <input type="text" name="EmployeeName" class="form-control" placeholder="Enter Employee Name"
-                          value=@Model.EmployeeName>
-    Employee Id: <input type="text" disabled name="EmployeeId" class="form-control" placeholder="Enter EmployeeIde"
-                        value=@Model.EmployeeId>
+                <form action="" method="post" class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label fw-medium">Employee Name</label>
+                        <input type="text" name="EmployeeName" class="form-control form-control-lg"
+                               placeholder="Enter Employee Name" value="@Model.EmployeeName">
+                    </div>
 
-    <input type="hidden" name="EmployeeId" class="form-control" placeholder="Enter EmployeeIde" value=@Model.EmployeeId>
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Employee Id</label>
+                        <input type="text" disabled name="EmployeeId" class="form-control"
+                               placeholder="Enter EmployeeId" value="@Model.EmployeeId">
+                    </div>
 
-                    
-    Performance Score: <input type="number" step="0.01" name="PerformanceScore" class="form-control"
-                              placeholder="Enter Employee PerformanceScore" value=@Model.PerformanceScore>
-    Lowest Project Rating: <input type="number" step="0.01" name="LowestProjectRating" class="form-control"
-                                  placeholder="Enter Employee LowestProjectRating" value=@Model.LowestProjectRating>
-    Total Projects Completed: <input type="number" step="0.01" name="TotalProjectsCompleted" class="form-control"
-                                     placeholder="Enter Employee TotalProjectsCompleted" value=@Model.TotalProjectsCompleted>
+                    <input type="hidden" name="EmployeeId" value="@Model.EmployeeId">
 
-    <input class="btn btn-success" type="submit" value="Update">
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Performance Score</label>
+                        <input type="number" step="0.01" name="PerformanceScore" class="form-control"
+                               placeholder="Enter Employee PerformanceScore" value="@Model.PerformanceScore">
+                    </div>
 
-</form>
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Lowest Project Rating</label>
+                        <input type="number" step="0.01" name="LowestProjectRating" class="form-control"
+                               placeholder="Enter Employee LowestProjectRating" value="@Model.LowestProjectRating">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Total Projects Completed</label>
+                        <input type="number" step="0.01" name="TotalProjectsCompleted" class="form-control"
+                               placeholder="Enter Employee TotalProjectsCompleted" value="@Model.TotalProjectsCompleted">
+                    </div>
+
+                    <div class="col-12 d-flex gap-2 pt-2">
+                        <input class="btn btn-success px-4" type="submit" value="Update">
+                        <a asp-controller="Employee" asp-action="Index" class="btn btn-outline-secondary">Back to
+                            List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,30 +1,36 @@
-<h1>Excellent Employees</h1>
+<div class="card border-0 shadow-sm">
+    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+        <h1 class="h4 mb-0">Excellent Employees</h1>
+        <a asp-controller="Employee" asp-action="Index" class="btn btn-sm btn-outline-secondary">Back to All</a>
+    </div>
 
-
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Employee Name</th>
-            <th>Employee ID</th>
-            <th>Performance Score</th>
-            <th>Lowest Project Rating</th>
-            <th>Total Projects Completed</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @{
-            foreach (var employee in Model)
-            {
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
                 <tr>
-                    <td>@employee.EmployeeName</td>
-                    <td>@employee.EmployeeId</td>
-                    <td>@employee.PerformanceScore</td>
-                    <td>@employee.LowestProjectRating</td>
-                    <td>@employee.TotalProjectsCompleted</td>
+                    <th>Employee Name</th>
+                    <th>Employee ID</th>
+                    <th>Performance Score</th>
+                    <th>Lowest Project Rating</th>
+                    <th>Total Projects Completed</th>
                 </tr>
-            }
-        }
-    </tbody>
-</table>
+            </thead>
+
+            <tbody>
+                @{
+                    foreach (var employee in Model)
+                    {
+                        <tr>
+                            <td class="fw-medium">@employee.EmployeeName</td>
+                            <td>@employee.EmployeeId</td>
+                            <td><span class="badge bg-success-subtle text-success-emphasis">@employee.PerformanceScore</span>
+                            </td>
+                            <td>@employee.LowestProjectRating</td>
+                            <td>@employee.TotalProjectsCompleted</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,74 +1,104 @@
-<h1>Employee List</h1> <a asp-controller="Employee" asp-action="Create" class="btn btn-outline-secondary">Add
-Employee</a>
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+        <h1 class="h2 mb-1">Employee List</h1>
+        <p class="text-muted mb-0">Manage team records and performance details.</p>
+    </div>
+    <a asp-controller="Employee" asp-action="Create" class="btn btn-primary px-4">Add Employee</a>
+</div>
 
-<h5 class="text-danger text-center fw-bolder">@TempData["deleteMsg"]</h5>
+@if (TempData["deleteMsg"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+        @TempData["deleteMsg"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
-<h5 class="text-success text-center fw-bolder">@TempData["CreateMsg"]</h5>
+@if (TempData["CreateMsg"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+        @TempData["CreateMsg"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
-<h5 class="text-warning text-center fw-bolder">@TempData["EditMsg"]</h5>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Employee Name</th>
-            <th>Employee ID</th>
-            <th>Performance Score</th>
-            <th>Lowest Project Rating</th>
-            <th>Total Projects Completed</th>
-            <th>Options</th>
-        </tr>
-    </thead>
+@if (TempData["EditMsg"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show shadow-sm" role="alert">
+        @TempData["EditMsg"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
-    <tbody>
-        @{
-            foreach (var employee in Model)
-            {
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0">All Employees</h2>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
                 <tr>
-                    <td>@employee.EmployeeName</td>
-                    <td>@employee.EmployeeId</td>
-                    <td>@employee.PerformanceScore</td>
-                    <td>@employee.LowestProjectRating</td>
-                    <td>@employee.TotalProjectsCompleted</td>
-                    <td><a href="./Employee/Details/@employee.EmployeeId" class="btn btn-outline-info">Details
-                    </a>
-                    <a href="./Employee/Delete/@employee.EmployeeId" class="btn btn-outline-info">Remove
-                    </a>
-                    <a href="./Employee/Update/@employee.EmployeeId" class="btn btn-outline-info">Edit
-                    </a>
-                </td>
-            </tr>
-        }
-    }
-</tbody>
-</table>
+                    <th>Employee Name</th>
+                    <th>Employee ID</th>
+                    <th>Performance Score</th>
+                    <th>Lowest Project Rating</th>
+                    <th>Total Projects Completed</th>
+                    <th class="text-end">Options</th>
+                </tr>
+            </thead>
 
-<h1>Filtered Employee List</h1>
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Employee Name</th>
-            <th>Employee ID</th>
-            <th>Employee Details</th>
-
-        </tr>
-    </thead>
-
-    <tbody>
-        @{
-            foreach (var employee in Model)
-            {
-                if (employee.PerformanceScore >= 4.7m)
-                {
-
-                    <tr>
-                        <td>@employee.EmployeeName</td>
-                        <td>@employee.EmployeeId</td>
-                        <td> PS- @employee.PerformanceScore , LPR-@employee.LowestProjectRating ,
-                            PC-@employee.TotalProjectsCompleted </td>
+            <tbody>
+                @{
+                    foreach (var employee in Model)
+                    {
+                        <tr>
+                            <td class="fw-medium">@employee.EmployeeName</td>
+                            <td>@employee.EmployeeId</td>
+                            <td><span class="badge bg-primary-subtle text-primary-emphasis">@employee.PerformanceScore</span></td>
+                            <td>@employee.LowestProjectRating</td>
+                            <td>@employee.TotalProjectsCompleted</td>
+                            <td class="text-end">
+                                <a href="./Employee/Details/@employee.EmployeeId" class="btn btn-sm btn-outline-primary me-1">Details</a>
+                                <a href="./Employee/Update/@employee.EmployeeId" class="btn btn-sm btn-outline-secondary me-1">Edit</a>
+                                <a href="./Employee/Delete/@employee.EmployeeId" class="btn btn-sm btn-outline-danger">Remove</a>
+                            </td>
                         </tr>
                     }
-               
                 }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-header bg-white py-3">
+        <h2 class="h5 mb-0">Filtered Employee List</h2>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Employee ID</th>
+                    <th>Employee Details</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    foreach (var employee in Model)
+                    {
+                        if (employee.PerformanceScore >= 4.7m)
+                        {
+                            <tr>
+                                <td class="fw-medium">@employee.EmployeeName</td>
+                                <td>@employee.EmployeeId</td>
+                                <td>PS- @employee.PerformanceScore, LPR- @employee.LowestProjectRating, PC- @employee.TotalProjectsCompleted</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

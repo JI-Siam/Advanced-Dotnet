@@ -1,15 +1,46 @@
-<h1>Add Employee</h1>
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-xl-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4 p-md-5">
+                <h1 class="h3 mb-4">Add Employee</h1>
 
-<form action="" method="post">
-    Employee Name: <input type="text" name="EmployeeName" class="form-control" placeholder="Enter Employee Name">
-    Employee Id: <input type="text" name="EmployeeId" class="form-control" placeholder="Enter EmployeeIde">
-    Performance Score: <input type="number" step="0.01" name="PerformanceScore" class="form-control"
-                              placeholder="Enter Employee PerformanceScore">
-    Lowest Project Rating: <input type="number" step="0.01" name="LowestProjectRating" class="form-control"
-                                  placeholder="Enter Employee LowestProjectRating ">
-    Total Projects Completed: <input type="number" step="0.01" name="TotalProjectsCompleted" class="form-control"
-                                     placeholder="Enter Employee TotalProjectsCompleted">
+                <form action="" method="post" class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label fw-medium">Employee Name</label>
+                        <input type="text" name="EmployeeName" class="form-control form-control-lg"
+                               placeholder="Enter employee name">
+                    </div>
 
-    <input class="btn btn-success" type="submit" value="Create">
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Employee Id</label>
+                        <input type="text" name="EmployeeId" class="form-control" placeholder="Enter employee id">
+                    </div>
 
-</form>
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Performance Score</label>
+                        <input type="number" step="0.01" name="PerformanceScore" class="form-control"
+                               placeholder="Enter performance score">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Lowest Project Rating</label>
+                        <input type="number" step="0.01" name="LowestProjectRating" class="form-control"
+                               placeholder="Enter lowest project rating">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Total Projects Completed</label>
+                        <input type="number" step="0.01" name="TotalProjectsCompleted" class="form-control"
+                               placeholder="Enter total projects completed">
+                    </div>
+
+                    <div class="col-12 d-flex gap-2 pt-2">
+                        <input class="btn btn-success px-4" type="submit" value="Create">
+                        <a asp-controller="Employee" asp-action="Index" class="btn btn-outline-secondary">Back to
+                            List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
