@@ -22,7 +22,6 @@
 /Applications/dotnet/EmployeeManagementApp/obj/Debug/net10.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /Applications/dotnet/EmployeeManagementApp/obj/Debug/net10.0/scopedcss/bundle/EmployeeManagementApp.styles.css
 /Applications/dotnet/EmployeeManagementApp/obj/Debug/net10.0/scopedcss/projectbundle/EmployeeManagementApp.bundle.scp.css
-/Applications/dotnet/EmployeeManagementApp/obj/Debug/net10.0/compressed/05z0g4n5ug-{0}-lugek5hnai-lugek5hnai.gz
 /Applications/dotnet/EmployeeManagementApp/obj/Debug/net10.0/compressed/nj5eapurqx-{0}-61n19gt1b8-61n19gt1b8.gz
 /Applications/dotnet/EmployeeManagementApp/obj/Debug/net10.0/compressed/7mqeuphkxg-{0}-fr7q2aak1r-fr7q2aak1r.gz
 /Applications/dotnet/EmployeeManagementApp/obj/Debug/net10.0/compressed/e23i5c14bk-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -223,3 +222,4 @@
 /Applications/dotnet/EmployeeManagementApp/bin/Debug/net10.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll
 /Applications/dotnet/EmployeeManagementApp/bin/Debug/net10.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll
 /Applications/dotnet/EmployeeManagementApp/obj/Debug/net10.0/Employee.8111CF64.Up2Date
+/Applications/dotnet/EmployeeManagementApp/obj/Debug/net10.0/compressed/05z0g4n5ug-{0}-wl53hm8uz8-wl53hm8uz8.gz

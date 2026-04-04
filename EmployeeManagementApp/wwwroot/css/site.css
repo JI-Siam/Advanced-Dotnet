@@ -19,6 +19,94 @@ html {
 
 body {
   margin-bottom: 60px;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(107, 124, 54, 0.24), transparent 34%),
+    radial-gradient(circle at 90% 82%, rgba(74, 90, 38, 0.2), transparent 30%),
+    linear-gradient(160deg, #f8f9f3 0%, #eef1e4 48%, #e6ebd7 100%);
+}
+
+:root {
+  --olive-900: #3d4a26;
+  --olive-800: #4a5a30;
+  --olive-700: #5f7339;
+  --olive-600: #6b7c45;
+  --olive-500: #809657;
+  --olive-200: #dfe7c7;
+  --olive-100: #eef3dc;
+}
+
+.navbar.bg-dark {
+  background: linear-gradient(120deg, var(--olive-900) 0%, var(--olive-700) 55%, var(--olive-500) 100%) !important;
+}
+
+.navbar.bg-dark .navbar-brand,
+.navbar.bg-dark .nav-link {
+  color: #f5f8ea !important;
+}
+
+.navbar.bg-dark .nav-link:hover,
+.navbar.bg-dark .nav-link:focus {
+  color: #ffffff !important;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.card {
+  border: 1px solid rgba(95, 115, 57, 0.16) !important;
+}
+
+.card-header,
+.table thead,
+.table-light {
+  background: linear-gradient(180deg, rgba(128, 150, 87, 0.2) 0%, rgba(128, 150, 87, 0.06) 100%) !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--olive-800) 0%, var(--olive-600) 100%);
+  border-color: var(--olive-800);
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background: linear-gradient(135deg, var(--olive-900) 0%, var(--olive-700) 100%) !important;
+  border-color: var(--olive-900) !important;
+}
+
+.btn-outline-secondary {
+  color: var(--olive-800);
+  border-color: rgba(74, 90, 48, 0.5);
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
+  background-color: var(--olive-100);
+  color: var(--olive-900);
+  border-color: var(--olive-700);
+}
+
+.badge.bg-primary-subtle {
+  background-color: var(--olive-200) !important;
+}
+
+.text-primary-emphasis {
+  color: var(--olive-900) !important;
+}
+
+.alert-success {
+  background: linear-gradient(90deg, #dcecc6 0%, #eef5e0 100%);
+  border-color: #bfd39a;
+  color: #3f5420;
+}
+
+.alert-warning {
+  background: linear-gradient(90deg, #f1edcf 0%, #f8f5dd 100%);
+  border-color: #ddd39f;
+  color: #67581e;
+}
+
+.footer.bg-light {
+  background: linear-gradient(180deg, #f3f6e7 0%, #e9efdb 100%) !important;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
