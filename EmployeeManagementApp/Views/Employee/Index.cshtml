@@ -1,0 +1,60 @@
+<h1>Employee List</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Employee ID</th>
+            <th>Performance Score</th>
+            <th>Lowest Project Rating</th>
+            <th>Total Projects Completed</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach (var employee in Model)
+            {
+                <tr>
+                    <td>@employee.EmployeeName</td>
+                    <td>@employee.EmployeeId</td>
+                    <td>@employee.PerformanceScore</td>
+                    <td>@employee.LowestProjectRating</td>
+                    <td>@employee.TotalProjectsCompleted</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<h1>Filtered Employee List</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Employee ID</th>
+            <th>Employee Details</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            foreach (var employee in Model)
+            {
+                if (employee.PerformanceScore >= 4.7m)
+                {
+
+                    <tr>
+                        <td>@employee.EmployeeName</td>
+                        <td>@employee.EmployeeId</td>
+                        <td> PS- @employee.PerformanceScore , LPR-@employee.LowestProjectRating ,
+                            PC-@employee.TotalProjectsCompleted </td>
+                        </tr>
+                    }
+               
+                }
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,44 @@
+Employee Model: 
+public class Employee
+{
+    public string EmployeeName
+    {
+        set; get;
+    }
+
+    public string EmployeeID
+    {
+        set; get;
+    }
+
+    public double PerformanceScore
+    {
+        set; get;
+    }
+
+    public double LowestProjectRating
+    {
+        set; get;
+    }
+
+    public int TotalProjectsCompleted
+    {
+        set; get;
+    }
+}
+
+EmployeeDBContext : 
+
+public class EmployeeDBContext : DbContext{
+
+    public EmployeeDBContext(DbContextOptions<EmployeeDBContext> option : base(options)){
+
+    }
+
+    public DbSet<Employee> Employees{
+        set ; get ;
+    }
+}
+
+
+
