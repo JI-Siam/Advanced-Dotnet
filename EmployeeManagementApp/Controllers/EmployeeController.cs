@@ -30,6 +30,7 @@ public class EmployeeController : Controller
     [HttpPost]
     public IActionResult Create(Employee emp)
     {
+
         db.Employees.Add(emp);
         db.SaveChanges();
         return RedirectToAction("Index");
