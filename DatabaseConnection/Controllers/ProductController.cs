@@ -15,27 +15,31 @@ public class ProductController : Controller
     [HttpGet]
     public IActionResult Index()
     {
-        // add product to the db. 
+        // show the categories names inorder to input product
         var data = db.Categories.ToList();
         return View(data);
     }
 
     [HttpPost]
-    public IActionResult Index(Product pd)
+    public IActionResult Index(ProductDTO pd)
     {
         // add product to the db. 
 
-        try
+        if (ModelState.IsValid)
         {
+            Product product = new Product()
+            {
+                Name = pd.Name,
+
+            };
             db.Products.Add(pd);
             db.SaveChanges();
             return RedirectToAction("List");
         }
-        catch
-        {
-            TempData["msg"] = "And Unknown Error Occured";
-            return View();
-        }
+
+        TempData["msg"] = "And Unknown Error Occured";
+        return View();
+
 
     }
 

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using JasimPlazaTenantPortal.EF.Tables;
+using DatabaseConnection.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

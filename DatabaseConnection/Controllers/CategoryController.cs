@@ -17,20 +17,24 @@ public class CategoryController : Controller
     }
 
     [HttpPost]
-    public IActionResult Index(Category cName)
+    public IActionResult Index(CategoryDTO ct)
     {
-        try
+
+        if (ModelState.IsValid)
         {
-            Console.WriteLine(cName);
-            db.Categories.Add(cName);
+            Category category = new Category()
+            {
+                Name = ct.Name
+            };
+            db.Categories.Add(category);
             db.SaveChanges();
             return RedirectToAction("List");
+
         }
-        catch
-        {
-            TempData["msg"] = "an Unknown Error Occured";
-            return View();
-        }
+
+        TempData["msg"] = "an Unknown Error Occured";
+        return View();
+
 
     }
 
