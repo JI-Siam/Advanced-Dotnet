@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Jasim-Plaza-Tenant-Portal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb4b73bc307ab0ab6c166915587fa82c060e4d7f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe2e14a9576f384d02d4f92582b9a9fbbc282157")]
 [assembly: System.Reflection.AssemblyProductAttribute("Jasim-Plaza-Tenant-Portal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Jasim-Plaza-Tenant-Portal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
